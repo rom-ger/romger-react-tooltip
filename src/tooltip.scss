@@ -1,0 +1,81 @@
+$white: #fff;
+$graphite: #303e4f;
+
+.rg-tooltip {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: calc(100% + 12px);
+  align-items: center;
+  justify-content: center;
+  min-width: 175px;
+  padding: 6px 8px 4px;
+  transform: translateY(-50%);
+  border-radius: 2px;
+  background-color: $graphite;
+  color: $white;
+  text-align: center;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: -3px;
+    width: 0;
+    height: 0;
+    transform: translate(-50%, -50%);
+    border-top: 4px solid transparent;
+    border-right: 4px solid $graphite;
+    border-bottom: 4px solid transparent;
+    border-left: 4px solid transparent;
+  }
+
+  &--bottom {
+    display: none;
+    top: calc(100% + 12px);
+    left: 50%;
+    transform: translate(-50%, 0);
+
+    &::before {
+      top: 0;
+      left: 50%;
+      width: 0;
+      height: 0;
+      transform: translate(-50%, -100%);
+      border-right: 4px solid transparent;
+      border-bottom: 4px solid $graphite;
+    }
+  }
+
+  &--left {
+    display: none;
+    top: 50%;
+    right: calc(100% + 12px);
+    left: inherit;
+
+    &::before {
+      top: 50%;
+      right: -3px;
+      left: inherit;
+      transform: translate(50%, -50%);
+      border-right: 4px solid transparent;
+      border-left: 4px solid $graphite;
+    }
+  }
+}
+
+.rg-tooltip-wrap {
+  position: relative;
+
+  &:hover {
+    .rg-tooltip {
+      display: flex;
+
+      &--bottom {
+        display: flex;
+      }
+    }
+  }
+}
